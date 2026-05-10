@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase'
 import { Truck, Plus, Edit2, Trash2, X, Mail, Phone, MapPin } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Supplier {
   id: string
   name: string

@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase'
 import { Plus, Search, Edit2, Trash2, X, AlertTriangle } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Product {
   id: string
   name: string

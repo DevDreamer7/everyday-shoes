@@ -5,6 +5,8 @@ import { createClient } from '@/lib/supabase'
 import { Package } from 'lucide-react'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 interface Product {
   id: string
   name: string

@@ -5,6 +5,8 @@ import { createClient } from '@/lib/supabase'
 import Link from 'next/link'
 import { Package, ShoppingCart, AlertTriangle, TrendingUp, DollarSign, Box } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface OutOfStockItem {
   id: string
   name: string

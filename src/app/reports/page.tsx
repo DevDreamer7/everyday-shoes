@@ -8,6 +8,8 @@ import {
   PieChart, Pie, Cell
 } from 'recharts'
 
+export const dynamic = 'force-dynamic'
+
 interface DailySale {
   date: string
   total: number
