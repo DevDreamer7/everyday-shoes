@@ -112,9 +112,9 @@ function StatCard({ icon: Icon, label, value, href, color }: {
   label: string
   value: string
   href: string
-  color: 'stone' | 'amber' | 'emerald' | 'blue'
+  color: 'stone' | 'amber' | 'emerald' | 'blue' | 'red'
 }) {
-  const colors = { stone: 'bg-stone-800 text-white', red: 'bg-red-600 text-white', emerald: 'bg-emerald-600 text-white', blue: 'bg-blue-600 text-white' }
+  const colors = { stone: 'bg-stone-800 text-white', red: 'bg-red-600 text-white', emerald: 'bg-emerald-600 text-white', blue: 'bg-blue-600 text-white', amber: 'bg-amber-600 text-white' }
   return (
     <Link href={href} className="block">
       <div className="bg-white rounded-xl border border-stone-200 p-6 hover:border-stone-300 transition-colors">
