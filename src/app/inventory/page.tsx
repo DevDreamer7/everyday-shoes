@@ -93,7 +93,7 @@ export default function InventoryPage() {
   const productGroups = filteredProducts.reduce((acc, p) => {
     const key = `${p.name}-${p.brand || ''}-${p.color || ''}`
     if (!acc[key]) {
-      acc[key] = { ...p, variants: [] }
+      acc[key] = { ...p, variants: [], totalStock: 0 }
     }
     acc[key].variants.push(p)
     acc[key].totalStock = (acc[key].totalStock || 0) + (p.stock_quantity || 0)
