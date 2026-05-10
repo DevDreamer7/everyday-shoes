@@ -1,0 +1,59 @@
+Everyday Shoes - Inventory Management App
+
+Stack: Next.js 16.2.6 + Tailwind CSS v4 + Supabase
+Location: C:\Users\aagam\Documents\everyday-shoes
+User: Aagam, single store, wants minimalist beautiful UI
+
+Features:
+- Dashboard with stats & out of stock alerts
+- Inventory (full CRUD: products, sizes, colors, brands, SKUs, pricing)
+- POS (sales, cart, grouped product display, customer selection, cash/card)
+- Customers (database with purchase tracking)
+- Suppliers (contact management)
+- Out of Stock page (only shows products with stock = 0)
+- Reports (revenue charts, top products, 7/30/90 day filters)
+
+Setup:
+1. Create Supabase project
+2. Update .env.local with URL & anon key
+3. Run src/lib/schema.sql in Supabase SQL Editor
+4. npm run dev
+
+Currency: Rs. (changed from $)
+Login password: Reliance@2080
+
+-- FIXED BUGS --
+1. Product Update: Fixed inventory/page.tsx to properly update product fields (price, cost, threshold, etc.)
+2. POS Page: Redesigned to group products by name/brand/color/price with expandable size grid (not messy individual cards)
+3. Delete Modal: Replaced browser confirm() with proper UI modal
+4. Delete Not Working: Fixed schema.sql - sale_items table had "on delete set null not null" constraint that blocked product deletion. Changed to "on delete cascade" so sale_items get deleted when product is deleted.
+
+-- CURRENT SCHEMA NOTES --
+Sale Items table uses cascade delete:
+product_id uuid references products(id) on delete cascade
+When a product is deleted, all related sale_items are automatically deleted.
+
+-- FILE STRUCTURE --
+src/
+  app/
+    page.tsx - Dashboard
+    layout.tsx - Root layout with sidebar
+    inventory/page.tsx - Product CRUD with grouped variants, delete modal
+    pos/page.tsx - POS with grouped product cards, expandable size selection
+    customers/page.tsx - Customer management
+    suppliers/page.tsx - Supplier management
+    alerts/page.tsx - Out of stock only (stock = 0)
+    reports/page.tsx - Charts & analytics
+    login/page.tsx - Simple password auth
+    api/auth/route.ts - Auth endpoint
+  components/
+    Sidebar.tsx - Navigation
+    AuthCheck.tsx - Auth guard
+  lib/
+    supabase.ts - Browser client
+    supabase-server.ts - Server client
+    schema.sql - Database schema (updated with cascade delete)
+  types/
+    index.ts - TypeScript interfaces
+    database.ts - Database types
+  middleware.ts - Placeholder
